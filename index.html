@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz San Valentín</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffebee;
+            color: #d32f2f;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 90%;
+            padding: 20px;
+        }
+        .text-content {
+            text-align: center;
+            padding: 10px;
+        }
+        .image-content {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .image-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 10px solid red;
+            padding: 10px;
+            background: url('https://i.imgur.com/1zq6y6P.png') center/cover no-repeat;
+        }
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1s infinite alternate;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+        .message {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .button {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .heart-float {
+            position: absolute;
+            color: red;
+            font-size: 30px;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-200px); opacity: 0; }
+        }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+                text-align: left;
+                max-width: 80%;
+            }
+            .text-content {
+                flex: 1;
+            }
+            .image-content {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+    <source src="https://docs.google.com/uc?export=download&id=1mcuk3uvWH4LsyzrGO-9E9adJjdOabE6a" type="audio/mpeg">
+ 
+    </audio>
+    <div class="container">
+        <div class="text-content">
+            <h1>💖 Feliz dia del amor y la amistad grupito xD 💖</h1>
+            <div class="heart">❤️</div>
+            <p class="message">💕</p>
+            <button class="button" onclick="mostrarSorpresa()">GOGOGO A ECHARLA</button>
+            <div id="sorpresa" style="display: none; font-size: 22px;color: forestgreen; font-weight: bold;">
+                <p>💘PERRA CACHERA</p>
+                <p>💖 5 SO GAAAA</p>
+                <p>❤️COMPARTAN NIÑITOS DAWN</p>
+            </div>
+        </div>
+        <div class="image-content">
+            <img src="dawn.jpg" alt="San Valentín">
+        </div>
+    </div>
+    <script>
+        function mostrarSorpresa() {
+            document.getElementById("sorpresa").style.display = "block";
+        }
+        function crearCorazones() {
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement("div");
+                heart.classList.add("heart-float");
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = window.innerHeight + "px";
+                heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }
+        }
+        setInterval(crearCorazones, 1000);
+    </script>
+</body>
+</html>
